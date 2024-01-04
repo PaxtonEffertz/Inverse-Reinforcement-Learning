@@ -25,7 +25,7 @@ def main(grid_size, discount, n_trajectories, epochs, learning_rate):
     """
 
     wind = 0.3
-    trajectory_length = 3*grid_size
+    trajectory_length = 3 grid_size
 
     gw = gridworld.Gridworld(grid_size, wind, discount)
     trajectories = gw.generate_trajectories(n_trajectories,
@@ -48,3 +48,4 @@ def main(grid_size, discount, n_trajectories, epochs, learning_rate):
 
 if __name__ == '__main__':
     main(5, 0.01, 20, 200, 0.01)
+ 
