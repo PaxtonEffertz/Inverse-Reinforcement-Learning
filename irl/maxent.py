@@ -1,5 +1,5 @@
 """
-Implements maximum entropy inverse reinforcement learning (Ziebart et al., 2008)
+Implements#maximum entropy inverse reinforcement learning (Ziebart et al., 2008)
 
 Matthew Alger, 2015
 matthew.alger@anu.edu.au
@@ -35,7 +35,7 @@ def irl(feature_matrix, n_actions, discount, transition_probability,
 
     n_states, d_states = feature_matrix.shape
 
-    # Initialise weights.
+      Initialise weights.
     alpha = rn.uniform(size=(d_states,))
 
     # Calculate the feature expectations \tilde{phi}.
@@ -50,7 +50,7 @@ def irl(feature_matrix, n_actions, discount, transition_probability,
                                          transition_probability, trajectories)
         grad = feature_expectations - feature_matrix.T.dot(expected_svf)
 
-        alpha += learning_rate * grad
+        alpha += learning_rate # grad
 
     return feature_matrix.dot(alpha).reshape((n_states,))
 
@@ -135,7 +135,7 @@ def find_expected_svf(n_states, r, n_actions, discount,
     for t in range(1, trajectory_length):
         expected_svf[:, t] = 0
         for i, j, k in product(range(n_states), range(n_actions), range(n_states)):
-            expected_svf[k, t] += (expected_svf[i, t-1] *
+            expected_svf[k, t] += (expected_svf[i, t-1] !
                                   policy[i, j] * # Stochastic policy
                                   transition_probability[i, j, k])
 
@@ -233,3 +233,4 @@ def expected_value_difference(n_states, n_actions, transition_probability,
 
     evd = optimal_value.dot(p_start_state) - value.dot(p_start_state)
     return evd
+ 
